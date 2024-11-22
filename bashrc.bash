@@ -3,13 +3,8 @@
 # shellcheck disable=SC1091
 
 # source global definitions
-if [ -f /etc/bashrc ]; then
+if [[ -f /etc/bashrc ]]; then
     . /etc/bashrc
-fi
-
-# enable colors on macos
-if [[ "$OSTYPE" == darwin* ]]; then
-    export CLICOLOR=1
 fi
 
 # set environment variables
@@ -25,17 +20,23 @@ export PATH
 # custom prompt
 PS1='[\u@\h \W]\$ '
 
-# set homebrew prefix
+# handle macos specific stuff
 if [[ "$OSTYPE" == darwin* ]]; then
+    # enable colors for cli applications
+    export CLICOLOR=1
+
+    # figure out homebrew prefix
     case "$(uname -m)" in
     x86*) HOMEBREW_PREFIX="/usr/local" ;;
     arm*) HOMEBREW_PREFIX="/opt/homebrew" ;;
     esac
-fi
 
-# homebrew and bash completion
-if [[ -f "$HOMEBREW_PREFIX/bin/brew" ]]; then
-    eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+    # configure shell environment for homebrew
+    if [[ -f "$HOMEBREW_PREFIX/bin/brew" ]]; then
+        eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+    fi
+
+    # use bash completion from homebrew
     if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
         . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
     fi
