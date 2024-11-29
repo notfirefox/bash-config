@@ -31,15 +31,15 @@ if [[ "$OSTYPE" == darwin* ]]; then
         eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
     fi
 elif [[ "$OSTYPE" == linux* ]]; then
-    # enable color support of ls and also add handy aliases
+    # set ls colors using dircolors
     if [[ -x /usr/bin/dircolors ]]; then
         eval "$(dircolors -b)"
-        alias ls='ls --color=auto'
-        alias diff='diff --color=auto'
-        alias grep='grep --color=auto'
-        alias zgrep='zgrep --color=auto'
-        alias xzgrep='xzgrep --color=auto'
     fi
+
+    # enable colors for cli applications
+    alias diff='diff --color=auto'
+    alias grep='grep --color=auto'
+    alias ls='ls --color=auto'
 fi
 
 # enable programmable completion features
