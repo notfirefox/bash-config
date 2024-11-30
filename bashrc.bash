@@ -15,6 +15,14 @@ export PATH
 # custom prompt
 PS1='[\u@\h \W]\$ '
 
+# configure history
+HISTSIZE=1000
+HISTFILESIZE=2000
+HISTCONTROL=ignoreboth
+
+# set bash options
+shopt -s histappend
+
 # handle macos specific stuff
 if [[ "$OSTYPE" == darwin* ]]; then
     # enable colors for cli applications
