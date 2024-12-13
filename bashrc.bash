@@ -12,9 +12,6 @@ if ! [[ "$PATH" == *"$HOME/.local/bin:$HOME/bin:"* ]]; then
 fi
 export PATH
 
-# custom prompt
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 # configure history
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -22,6 +19,15 @@ HISTCONTROL=ignoreboth
 
 # set bash options
 shopt -s histappend
+
+# custom prompt
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# set the title for xterm to user@host:dir
+case "$TERM" in
+xterm* | rxvt*) PS1="\[\e]0;\u@\h: \w\a\]$PS1" ;;
+*) ;;
+esac
 
 # handle macos specific stuff
 if [[ "$OSTYPE" == darwin* ]]; then
