@@ -6,6 +6,11 @@
 export EDITOR=ed
 export VISUAL=vi
 
+# add haskell to path
+if [[ -r "$HOME/.ghcup/env" ]]; then
+    . "$HOME/.ghcup/env"
+fi
+
 # user specific environment
 if ! [[ "$PATH" == *"$HOME/.local/bin:$HOME/bin:"* ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
