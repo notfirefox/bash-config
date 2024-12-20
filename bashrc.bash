@@ -6,16 +6,6 @@
 export EDITOR=ed
 export VISUAL=vi
 
-# add haskell to path
-if [[ -r "$HOME/.ghcup/env" ]]; then
-    . "$HOME/.ghcup/env"
-fi
-
-# user specific environment
-if [[ "$PATH" != *"$HOME/.local/bin:$HOME/bin:"* ]]; then
-    export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-
 # configure history
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -58,6 +48,16 @@ elif [[ "$OSTYPE" == linux* ]]; then
     alias diff='diff --color=auto'
     alias grep='grep --color=auto'
     alias ls='ls --color=auto'
+fi
+
+# add haskell to path
+if [[ -r "$HOME/.ghcup/env" ]]; then
+    . "$HOME/.ghcup/env"
+fi
+
+# add users dirs to path
+if [[ "$PATH" != *"$HOME/.local/bin:$HOME/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
 # enable programmable completion features
