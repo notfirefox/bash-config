@@ -18,10 +18,9 @@ shopt -s histappend
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # set the title for xterm to user@host:dir
-case "$TERM" in
-xterm* | rxvt*) PS1="\[\e]0;\u@\h: \w\a\]$PS1" ;;
-*) ;;
-esac
+if [[ "$TERM" == rxvt* || "$TERM" == xterm* ]]; then
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+fi
 
 # handle macos specific stuff
 if [[ "$OSTYPE" == darwin* ]]; then
