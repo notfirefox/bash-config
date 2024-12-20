@@ -12,10 +12,9 @@ if [[ -r "$HOME/.ghcup/env" ]]; then
 fi
 
 # user specific environment
-if ! [[ "$PATH" == *"$HOME/.local/bin:$HOME/bin:"* ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if [[ "$PATH" != *"$HOME/.local/bin:$HOME/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-export PATH
 
 # configure history
 HISTSIZE=1000
