@@ -2,10 +2,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1091
 
-# set environment variables
-export EDITOR=ed
-export VISUAL=vi
-
 # configure history
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -52,11 +48,6 @@ fi
 # add haskell to path
 if [[ -r "$HOME/.ghcup/env" ]]; then
     . "$HOME/.ghcup/env"
-fi
-
-# add users dirs to path
-if [[ "$PATH" != *"$HOME/.local/bin:$HOME/bin:"* ]]; then
-    export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
 # enable programmable completion features
