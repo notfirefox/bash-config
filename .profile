@@ -29,3 +29,6 @@ fi
 # set EDITOR and VISUAL environment variables
 export EDITOR=ed
 export VISUAL=vi
+
+# set EXINIT environment variable
+export EXINIT="set noflash"
